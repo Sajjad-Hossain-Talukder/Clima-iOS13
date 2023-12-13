@@ -8,4 +8,5 @@
 
 protocol WeatherProtocol {
     func updateWeather(cWeather:CurrentWeather)
+    func encounteredError( error : Error )
 }

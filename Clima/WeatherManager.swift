@@ -26,7 +26,7 @@ struct WeatherManager {
             let session = URLSession(configuration: .default )
             let task = session.dataTask(with:safeURL, completionHandler: { (data,response,error) in
                 if error != nil {
-                    print(error!)
+                    delegate?.encounteredError(error: error!)
                     return
                 }
                 if let safeData = data {
@@ -57,7 +57,7 @@ struct WeatherManager {
             return currentWeather;
             
         } catch {
-            //print(error)
+            delegate?.encounteredError(error: error)
             return nil
         }
         

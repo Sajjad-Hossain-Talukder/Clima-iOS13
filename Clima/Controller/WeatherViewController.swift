@@ -60,9 +60,13 @@ class WeatherViewController: UIViewController , UITextFieldDelegate, WeatherProt
     
     func updateWeather(cWeather: CurrentWeather) {
         print ( cWeather.temperatureString , cWeather.city , cWeather.getCondition )
-        temperatureLabel.text = "Sak"
-        //cityLabel.text = cWeather.city
-        //conditionImageView.image = UIImage(named: cWeather.getCondition)
+        // temperatureLabel.text = "Sak"
+        // cityLabel.text = cWeather.city
+        // conditionImageView.image = UIImage(named: cWeather.getCondition)
+    }
+    
+    func encounteredError(error: Error ){
+        print( error )
     }
     
 }
