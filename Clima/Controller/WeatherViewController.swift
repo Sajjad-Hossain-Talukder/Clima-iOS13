@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreLocation
 
-class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController, CLLocationManagerDelegate  {
     
     var weatherManager = WeatherManager()
+    var locationManager = CLLocationManager()
 
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -19,8 +21,16 @@ class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // permission for accessing GPS location from user
+        locationManager.requestWhenInUseAuthorization()
+        
+        
+        
         searchTextField.delegate = self
         weatherManager.delegate = self
+        //locationManager.delegate = self
     }
 
     @IBAction func searchPressed(_ sender: UIButton) {
