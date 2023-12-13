@@ -35,6 +35,7 @@
 		ADAA27C5231BC02B00365194 /* dark_background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dark_background.pdf; sourceTree = "<group>"; };
 		ADAA27CD231BC87F00365194 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B671306D2B2976FF0080D355 /* WeatherProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherProtocol.swift; path = Clima/WeatherProtocol.swift; sourceTree = SOURCE_ROOT; };
+		B671306F2B2998540080D355 /* ExtensionPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = ExtensionPlayground.playground; path = ../Basics/ExtensionPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B6E1EF1D2B284E61004A9503 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherManager.swift; path = Clima/WeatherManager.swift; sourceTree = SOURCE_ROOT; };
 		B6E1EF212B287E22004A9503 /* WeatherDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherDecoder.swift; path = Clima/WeatherDecoder.swift; sourceTree = SOURCE_ROOT; };
 		B6E1EF232B288EF6004A9503 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrentWeather.swift; path = Clima/CurrentWeather.swift; sourceTree = SOURCE_ROOT; };
@@ -54,6 +55,7 @@
 		ADAA27A4231BBFAF00365194 = {
 			isa = PBXGroup;
 			children = (
+				B671306F2B2998540080D355 /* ExtensionPlayground.playground */,
 				ADAA27CD231BC87F00365194 /* README.md */,
 				ADAA27AF231BBFAF00365194 /* Clima */,
 				ADAA27AE231BBFAF00365194 /* Products */,
