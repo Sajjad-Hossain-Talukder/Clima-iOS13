@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  WeatherManager.swift
 //  Clima
 //
 //  Created by Xotech on 12/12/2023.

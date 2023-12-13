@@ -8,18 +8,14 @@
 
 import UIKit
 
-class WeatherViewController: UIViewController , UITextFieldDelegate, WeatherProtocol {
+class WeatherViewController: UIViewController {
     
     var weatherManager = WeatherManager()
 
-    
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +28,13 @@ class WeatherViewController: UIViewController , UITextFieldDelegate, WeatherProt
         print(searchTextField.text!)
     }
     
-    // Enable Go/ Return Button from Keyboard
+}
+
+//MARK: - UITextFieldDelegate
+
+extension WeatherViewController : UITextFieldDelegate {
     
+    // Enable Go/ Return Button from Keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)  // Terminate keyboard from screen
         print(searchTextField.text!)
@@ -41,8 +42,6 @@ class WeatherViewController: UIViewController , UITextFieldDelegate, WeatherProt
     }
     
     // after completing editing it activate. Here its said to clear the text in field
-    
-    
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField.text != "" {
             return true
@@ -52,11 +51,16 @@ class WeatherViewController: UIViewController , UITextFieldDelegate, WeatherProt
         return false
     }
     
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         weatherManager.getTemp(searchTextField.text!)
         searchTextField.text = ""
     }
+    
+}
+
+//MARK: - Weather Protocol
+
+extension WeatherViewController : WeatherProtocol {
     
     func updateWeather(cWeather: CurrentWeather) {
         DispatchQueue.main.async {
@@ -69,7 +73,9 @@ class WeatherViewController: UIViewController , UITextFieldDelegate, WeatherProt
     func encounteredError(error: Error ){
         print( error )
     }
-    
 }
+
+
+
 
 
