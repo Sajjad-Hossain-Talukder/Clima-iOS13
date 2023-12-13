@@ -35,11 +35,9 @@ class WeatherViewController: UIViewController  {
     }
 
     @IBAction func currentLocationPressed(_ sender: UIButton) {
-        print("currentLocationPressed Yo")
         locationManager.requestLocation()
-        
-        print("currentLocationPressed Yo")
     }
+    
     @IBAction func searchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true) // Terminate keyboard from screen
         print(searchTextField.text!)
@@ -99,7 +97,6 @@ extension WeatherViewController : CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             locationManager.stopUpdatingLocation()
-            print("Inside")
             weatherManager.getTempByLatLon(lat:location.coordinate.latitude, lon:location.coordinate.longitude)
         }
     }
