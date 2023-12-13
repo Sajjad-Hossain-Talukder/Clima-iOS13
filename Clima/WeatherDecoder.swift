@@ -18,6 +18,7 @@ struct Temperature: Decodable  {
 
 struct Condition : Decodable {
     let text : String
+    let code : Int
 }
 
 struct Name : Decodable {
