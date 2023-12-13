@@ -17,19 +17,19 @@ struct CurrentWeather {
     
     var getCondition : String {
         switch code {
-        case 1000...1030:
+        case 200...232:
             return "cloud.bolt"
-        case 1031...1050:
+        case 300...321:
             return "cloud.drizzle"
-        case 1051...1080:
+        case 500...531:
             return "cloud.rain"
-        case 1081...1100:
+        case 600...622:
             return "cloud.snow"
-        case 1101...1140:
+        case 701...781:
             return "cloud.fog"
-        case 1141...1200:
+        case 782...800:
             return "sun.max"
-        case 1201...1250:
+        case 801...804:
             return "cloud.bolt"
         default:
             return "cloud"

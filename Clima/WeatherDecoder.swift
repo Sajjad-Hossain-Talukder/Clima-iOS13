@@ -7,20 +7,16 @@
 //
 
 struct WeatherDecoder : Decodable {
-    let current : Temperature
-    let location : Name
+    let main : Main
+    let weather : [Weather]
+    let name  : String
 }
 
-struct Temperature: Decodable  {
-    let temp_c : Double
-    let condition : Condition
+struct Main: Decodable  {
+    let temp : Double
 }
 
-struct Condition : Decodable {
-    let text : String
-    let code : Int
+struct Weather : Decodable {
+    let id : Int
 }
 
-struct Name : Decodable {
-    let name : String
-}

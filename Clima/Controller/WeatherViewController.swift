@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController, CLLocationManagerDelegate  {
+class WeatherViewController: UIViewController  {
     
     var weatherManager = WeatherManager()
     var locationManager = CLLocationManager()
@@ -22,17 +22,24 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchTextField.delegate = self
+        weatherManager.delegate = self
+        locationManager.delegate = self
         
         // permission for accessing GPS location from user
         locationManager.requestWhenInUseAuthorization()
         
-        
-        
-        searchTextField.delegate = self
-        weatherManager.delegate = self
-        //locationManager.delegate = self
+        // Get the location
+        locationManager.requestLocation()
+    
     }
 
+    @IBAction func currentLocationPressed(_ sender: UIButton) {
+        print("currentLocationPressed Yo")
+        locationManager.requestLocation()
+        
+        print("currentLocationPressed Yo")
+    }
     @IBAction func searchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true) // Terminate keyboard from screen
         print(searchTextField.text!)
@@ -62,7 +69,7 @@ extension WeatherViewController : UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        weatherManager.getTemp(searchTextField.text!)
+        weatherManager.getTempByCity(searchTextField.text!)
         searchTextField.text = ""
     }
     
@@ -82,6 +89,23 @@ extension WeatherViewController : WeatherProtocol {
     
     func encounteredError(error: Error ){
         print( error )
+    }
+}
+
+//MARK: - CLLocationManagerDelegate
+
+
+extension WeatherViewController : CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            print("Inside")
+            weatherManager.getTempByLatLon(lat:location.coordinate.latitude, lon:location.coordinate.longitude)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
 

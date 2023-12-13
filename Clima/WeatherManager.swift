@@ -9,14 +9,19 @@ import UIKit
 
 struct WeatherManager {
     
-    let weatherURL = "https://api.weatherapi.com/v1/current.json?key=60dd9ed4e39a4f81826113334231212&aqi=no&q="
+    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=a95dbde2fc03bf91f3aa3809d393ea79&units=metric&"
     
     
     var delegate : WeatherProtocol?
     
     
-    mutating func getTemp(_ location: String){
-        let urlString = weatherURL+location
+    mutating func getTempByCity(_ location: String){
+        let urlString = weatherURL+"q="+location
+        self.performReq(urlString:urlString)
+    }
+    
+    mutating func getTempByLatLon(lat:Double,lon:Double){
+        let urlString = weatherURL+"lat="+String(lat)+"&lon="+String(lon)
         self.performReq(urlString:urlString)
     }
     
@@ -48,9 +53,9 @@ struct WeatherManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherDecoder.self, from : data )
-            let cityName = decodedData.location.name
-            let temp = decodedData.current.temp_c
-            let code = decodedData.current.condition.code
+            let cityName = decodedData.name
+            let temp = decodedData.main.temp
+            let code = decodedData.weather[0].id
            
             let currentWeather = CurrentWeather(city:cityName,temperature:temp,code:code)
             
